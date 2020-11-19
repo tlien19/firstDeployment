@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Trip</title>
+</head>
+<body>
+    <div class='navMenu'>
+        <button><a href="/travels">Back to Dashboard</a></button>
+        <button><a href="/logout">Log Out</a></button>
+    </div>
+    <div class='formWrap'>
+        <h3>{{viewTrip.destination}}</h3>
+        <p>Organized By: {{viewTrip.organized_by.first}} {{viewTrip.organized_by.last}}</p>
+        <p>Description: {{viewTrip.description}}</p>
+        <p>Start Date: {{viewTrip.tripStart|date:"F j Y"}}</p>
+        <p>End Date: {{viewTrip.tripEnd|date:"F j Y"}}</p>
+    </div>
+    <div class='formWrap'>
+        <h3>Other Users Joining the Trip</h3>
+        {% for user in otherUsers %}
+        <p>{{user.first}} {{user.last}}</p>
+        {% endfor %}
+    </div>
+</body>
+</html>

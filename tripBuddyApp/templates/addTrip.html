@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add A Trip</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class='navMenu'>
+        <button><a href="/travels">Back to Dashboard</a></button>
+        <button><a href="/logout">Log Out</a></button>
+    </div>
+    <h1>Add A Trip</h1>
+    <div class='wrapper1'>
+        <div class='formWrap'>
+            <form action="/createTrip" method="post">
+                {% csrf_token %}
+                <p>Destination <input type="text" name="trip_dest" id=""></p>
+                <p>Description <input type="text" name="trip_desc" id=""></p>
+                <p>Trip Starts On <input type="date" name="trip_start" id=""></p>
+                <p>Trip Ends On <input type="date" name="trip_end" id=""></p>
+                <div class='buttonWrap'><button type="submit">Submit</button></div>
+            </form>
+        </div>
+    </div>
+    {% if messages %}
+        <div class='formWrap'>
+            <h2>Cannot Process With Following Errors</h2>
+            {% for message in messages %}
+                <p class='errorMessages'>{{ message }}</p>
+            {% endfor %}
+        </div>
+    {% endif %}
+</body>
+</html>

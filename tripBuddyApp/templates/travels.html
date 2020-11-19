@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Dashboard</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <h1>Welcome, {{request.session.user_logged}}!</h1>
+    <div class='navMenu'>
+        <button><a href="/addtrip">Create New Trip</a></button>
+        <button><a href="/logout">Log Out</a></button>
+    </div>
+    <h1>Your Scheduled Trips</h1>
+    <table>
+        <tr>
+            <td>Destination</td>
+            <td>Trip Start Date</td>
+            <td>Trip End Date</td>
+            <td>Description</td>
+            <td>Action</td>
+        </tr>
+        {% for trip in userTrip %}
+        <tr>
+            <td><a href="/view/{{trip.id}}">{{trip.destination}}</a></td>
+            <td>{{trip.tripStart|date:"F j Y"}}</td>
+            <td>{{trip.tripEnd|date:"F j Y"}}</td>
+            <td>{{trip.description}}</td>
+            <td><a href=/cancel/{{trip.id}}>Cancel</a>
+            {% if trip.organized_by.id == request.session.user_id %}
+                <a href="/delete/{{trip.id}}">Delete</a></td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </table>
+    <hr>
+    <h1>Other Trips Detail</h1>
+    <table>
+        <tr>
+            <td>Destination</td>
+            <td>Trip Start Date</td>
+            <td>Trip End Date</td>
+            <td>Description</td>
+            <td>Action</td>
+        </tr>
+        {% for trip in otherTrip %}
+        <tr>
+            <td><a href="/view/{{trip.id}}">{{trip.destination}}</a></td>
+            <td>{{trip.tripStart|date:"F j Y"}}</td>
+            <td>{{trip.tripEnd|date:"F j Y"}}</td>
+            <td>{{trip.description}}</td>
+            <td><a href=/join/{{trip.id}}>Join</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

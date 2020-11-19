@@ -1,0 +1,55 @@
+h1 {
+    text-align: center;
+    color: blue;
+}
+
+h2 {
+    text-align: center;
+    color: red;
+}
+
+.wrapper1 {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.formWrap {
+    display: block;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.buttonWrap {
+    text-align: center;
+}
+
+.errorMessages {
+    text-align: center;
+    color: red;
+}
+
+.navMenu { 
+    display: flex;
+    justify-content: space-evenly;
+}
+
+input {
+    margin-left: 5px;
+    float: right;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
